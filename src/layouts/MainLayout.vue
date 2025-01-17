@@ -1,102 +1,88 @@
 <template>
   <q-layout view="lHh Lpr lFf">
-    <q-header elevated>
-      <q-toolbar>
-        <q-btn
-          flat
-          dense
-          round
-          icon="menu"
-          aria-label="Menu"
-          @click="toggleLeftDrawer"
-        />
+    <div class="page-wrapper">
+      <!-- Header -->
+      <q-header elevated class="PageHeader">
+        <q-toolbar class="row items-center">
+          <div>
+            <q-avatar square @click="$router.push('/')">
+              <img src="../assets/blog-logo.png" />
+            </q-avatar>
+          </div>
+          <div class="q-ml-auto row items-center">
+            <q-btn flat round dense icon="search" />
+            <q-btn flat round dense icon="menu" @click="toggleLeftDrawer" />
+          </div>
+        </q-toolbar>
+      </q-header>
 
-        <q-toolbar-title>
-          Quasar App
-        </q-toolbar-title>
+      <!-- Sidebar Drawer -->
+      <q-drawer v-model="leftDrawerOpen" side="right" show-if-above bordered>
+        <q-list>
+          <q-item-label header> Navigation </q-item-label>
 
-        <div>Quasar v{{ $q.version }}</div>
-      </q-toolbar>
-    </q-header>
+          <!-- Drawer Links -->
+          <q-item clickable v-ripple @click="$router.push('/')">
+            <q-item-section avatar>
+              <q-icon name="home" />
+            </q-item-section>
+            <q-item-section> Home </q-item-section>
+          </q-item>
 
-    <q-drawer
-      v-model="leftDrawerOpen"
-      show-if-above
-      bordered
-    >
-      <q-list>
-        <q-item-label
-          header
-        >
-          Essential Links
-        </q-item-label>
+          <q-item clickable v-ripple @click="$router.push('/create')">
+            <q-item-section avatar>
+              <q-icon name="edit" />
+            </q-item-section>
+            <q-item-section> Create Post </q-item-section>
+          </q-item>
 
-        <EssentialLink
-          v-for="link in linksList"
-          :key="link.title"
-          v-bind="link"
-        />
-      </q-list>
-    </q-drawer>
+          <q-item clickable v-ripple @click="$router.push('/about')">
+            <q-item-section avatar>
+              <q-icon name="info" />
+            </q-item-section>
+            <q-item-section> About </q-item-section>
+          </q-item>
+        </q-list>
+      </q-drawer>
 
-    <q-page-container>
-      <router-view />
-    </q-page-container>
+      <!-- Main Content -->
+      <q-page-container>
+        <router-view />
+      </q-page-container>
+    </div>
   </q-layout>
 </template>
 
-<script setup>
-import { ref } from 'vue'
-import EssentialLink from 'components/EssentialLink.vue'
-
-const linksList = [
-  {
-    title: 'Docs',
-    caption: 'quasar.dev',
-    icon: 'school',
-    link: 'https://quasar.dev'
+<script>
+export default {
+  data() {
+    return {
+      leftDrawerOpen: false,
+    }
   },
-  {
-    title: 'Github',
-    caption: 'github.com/quasarframework',
-    icon: 'code',
-    link: 'https://github.com/quasarframework'
+  methods: {
+    toggleLeftDrawer() {
+      this.leftDrawerOpen = !this.leftDrawerOpen
+    },
   },
-  {
-    title: 'Discord Chat Channel',
-    caption: 'chat.quasar.dev',
-    icon: 'chat',
-    link: 'https://chat.quasar.dev'
-  },
-  {
-    title: 'Forum',
-    caption: 'forum.quasar.dev',
-    icon: 'record_voice_over',
-    link: 'https://forum.quasar.dev'
-  },
-  {
-    title: 'Twitter',
-    caption: '@quasarframework',
-    icon: 'rss_feed',
-    link: 'https://twitter.quasar.dev'
-  },
-  {
-    title: 'Facebook',
-    caption: '@QuasarFramework',
-    icon: 'public',
-    link: 'https://facebook.quasar.dev'
-  },
-  {
-    title: 'Quasar Awesome',
-    caption: 'Community Quasar projects',
-    icon: 'favorite',
-    link: 'https://awesome.quasar.dev'
-  }
-]
-
-const leftDrawerOpen = ref(false)
-
-function toggleLeftDrawer () {
-  leftDrawerOpen.value = !leftDrawerOpen.value
 }
 </script>
+
+<style scoped>
+.PageHeader {
+  background-color: #ce5d25;
+  color: white;
+  border-radius: 12px; /* Match the border-radius of the wrapper */
+  padding: 20px;       /* Adjust spacing as needed */
+  margin: 20px 40px;
+}
+
+.page-wrapper {
+  margin: 0 20px 0 20px; /* Adds white space around the entire page */
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden; /* Ensures content respects the border-radius */
+  
+}
+</style>
