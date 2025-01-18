@@ -3,33 +3,33 @@
     <!-- Featured Blog Carousel -->
     <FeaturedBlog />
     <div>
-    <h3>What's new</h3>    
+      <h3>What's new?</h3>
+      <hr />
     </div>
-    <div>
-<div class="row">
-  <div class="col-4"><BlogCard/></div>
-  <div class="col-4"><BlogCard/></div>
-  <div class="col-4"><BlogCard/></div>
-
-</div>
+    <div class="recent-posts">
+      <BlogList />
+      <BlogList />
     </div>
 
+    <div class="featured-posts">
+      <h3> Featured Posts</h3>
+      <hr/>
+      <FeaturedBlog/>
 
-    <!-- Blog List Section -->
-    <!-- <BlogList /> -->
+    </div>
   </div>
 </template>
 
 <script>
-import FeaturedBlog from 'components/FeaturedBlog.vue';
-import BlogCard from 'src/components/BlogCard.vue';
+import FeaturedBlog from 'components/FeaturedBlog.vue'
+import BlogList from 'src/components/BlogList.vue'
 
 // import BlogList from 'components/BlogList.vue';
 
 export default {
   components: {
     FeaturedBlog,
-    BlogCard,
+    BlogList,
   },
 }
 </script>
@@ -37,8 +37,20 @@ export default {
 <style scoped>
 .home-page {
   padding: 0;
-  background:white;
+  background: white;
   margin: 0;
   border: 0;
+  font-family: Raleway, sans-serif;
+ 
+}
+
+h3 {
+  padding: 0;
+  margin: 20px 20px 0 20px;
+}
+
+hr {
+  color: gray;
+  margin: 20px;
 }
 </style>

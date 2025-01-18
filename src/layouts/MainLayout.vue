@@ -2,7 +2,7 @@
   <q-layout view="lHh Lpr lFf">
     <div class="page-wrapper">
       <!-- Header -->
-      <q-header elevated class="PageHeader">
+      <q-header reveal class="PageHeader">
         <q-toolbar class="row items-center">
           <div>
             <q-avatar square @click="$router.push('/')">
@@ -17,7 +17,7 @@
       </q-header>
 
       <!-- Sidebar Drawer -->
-      <q-drawer v-model="leftDrawerOpen" side="right" show-if-above bordered>
+      <q-drawer v-model="leftDrawerOpen" side="right">
         <q-list>
           <q-item-label header> Navigation </q-item-label>
 
@@ -50,6 +50,35 @@
         <router-view />
       </q-page-container>
     </div>
+<!-- 
+    <q-footer reveal class="bg-primary text-white">
+      <div class="footer">
+        <div>Subscribe to our Newsletter</div>
+        <div>Get all the latest posts delivered straight to your inbox.</div>
+        <div>
+          <input placeholder="Your email address" />
+          <button>Sign Up→</button>
+        </div>
+        <div class="row">
+          <div class="col-6">
+            <ul>
+              <li>Tags</li>
+              <li>Features</li>
+              <li>Eco-Friendly</li>
+              <li>Style Guide</li>
+            </ul>
+          </div>
+          <div class="col-6">
+            <ul>
+              <li>Tags</li>
+              <li>Features</li>
+              <li>Eco-Friendly</li>
+              <li>Style Guide</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </q-footer> -->
   </q-layout>
 </template>
 
@@ -73,8 +102,8 @@ export default {
   background-color: #ce5d25;
   color: white;
   border-radius: 12px; /* Match the border-radius of the wrapper */
-  padding: 20px;       /* Adjust spacing as needed */
-  margin: 20px 40px;
+  padding: 20px; /* Adjust spacing as needed */
+  margin: 20px 90px;
 }
 
 .page-wrapper {
@@ -83,6 +112,11 @@ export default {
   border-radius: 12px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   overflow: hidden; /* Ensures content respects the border-radius */
-  
+}
+
+.q-page-container{
+  padding: 50px;
+  margin: 0;
+  border: 0;
 }
 </style>

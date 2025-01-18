@@ -33,15 +33,14 @@ export default {}
   margin: 0 20px;
 }
 
-.img-comtainer {
-  margin: 50px;
+.img-container {
+  padding: 55px; /* Adds space around the image */
 }
 .featured-image {
   width: 100%;
   height: auto;
   border-radius: 12px;
 }
-
 button {
   padding: 20px 32px;
   margin: 8px;
@@ -56,6 +55,18 @@ button {
   color: white;
   background: #ce5d25;
   border: white solid 1px;
+}
+
+.primary-button:hover {
+  color: white; /* Interchange color */
+  background: #ce5d25; /* Interchange background */
+  border: white solid 1px; /* Interchange border */
+}
+
+.secondary-button:hover {
+  color: #ce5d25; /* Interchange color */
+  background: white; /* Interchange background */
+  border: #ce5d25 solid; /* Interchange border */
 }
 
 h3 {
