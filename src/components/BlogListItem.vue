@@ -72,27 +72,7 @@
 
 <script>
 export default {
-  data() {
-    return {
-      blogs: [
-        {
-          id: 1,
-          title: 'First Blog',
-          excerpt: 'This is the first blog excerpt',
-          clicks: 120,
-          image: '/home-page.jpg',
-        },
-      ],
-    }
-  },
-  methods: {
-    editBlog() {
-      console.log('Edit button clicked')
-    },
-    deleteBlog() {
-      console.log('Delete button clicked')
-    },
-  },
+  
 }
 </script>
 
@@ -102,4 +82,11 @@ export default {
   height: 100px;
   object-fit: cover;
 }
+
+.blog-list-admin{
+    border: 1px solid red;
+}
+
+
+
 </style>

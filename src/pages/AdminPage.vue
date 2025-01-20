@@ -1,8 +1,10 @@
 <template>
   <q-page>
-    <div class="row">
-      <div class="col-9">
-        <BlogListItem class="blog-list-admin" />
+    <div class="row admin-page">
+      <div class="col-9 ">
+        <BlogList  />
+      
+      
       </div>
 
       <div class="col-3">
@@ -13,16 +15,17 @@
 </template>
 
 <script>
-import BlogListItem from 'src/components/BlogListItem.vue'
+import BlogList from 'src/components/BlogList.vue';
+
+
 
 export default {
   components: {
-    BlogListItem,
+
+    BlogList,
+
   },
 
-  data() {
-    
-  },
   methods: {
      goToEditor() {
       this.$router.push({ name: 'create' }); // Navigate to the editor page
@@ -49,16 +52,11 @@ button {
   border: white solid 1px;
 }
 
-.blog-list {
-  background: salmon;
-  margin: 50px;
-  padding: 20px;
-}
-.side-section {
-  background: red;
+
+.admin-page {
+  margin: 100px 25px;
+  border: solid 1px blue;
 }
 
-.blog-list-admin {
-  margin: 42px 25px;
-}
+
 </style>

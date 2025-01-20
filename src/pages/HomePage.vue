@@ -5,31 +5,29 @@
     <div>
       <h3>What's new?</h3>
       <hr />
+      <BlogGrid />
+      <BlogGrid />
     </div>
-    <div class="recent-posts">
-      <BlogList />
-      <BlogList />
-    </div>
+    <div class="recent-posts"></div>
 
     <div class="featured-posts">
-      <h3> Featured Posts</h3>
-      <hr/>
-      <FeaturedBlog/>
-
+      <h3>Featured Posts</h3>
+      <hr />
+      <FeaturedBlog />
     </div>
   </div>
 </template>
 
 <script>
 import FeaturedBlog from 'components/FeaturedBlog.vue'
-import BlogList from 'src/components/BlogList.vue'
+import BlogGrid from 'src/components/BlogGrid.vue'
 
 // import BlogList from 'components/BlogList.vue';
 
 export default {
   components: {
     FeaturedBlog,
-    BlogList,
+    BlogGrid,
   },
 }
 </script>
@@ -41,7 +39,6 @@ export default {
   margin: 0;
   border: 0;
   font-family: Raleway, sans-serif;
- 
 }
 
 h3 {

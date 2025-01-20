@@ -3,7 +3,7 @@ const routes = [
     path: '/',
     component: () => import('layouts/MainLayout.vue'),
     children: [
-      { path: '', component: () => import('pages/HomePage.vue') },
+      { path: '', component: () => import('pages/HomePage.vue'), name: 'home' },
       {
         path: 'admin', // New route path for the admin page
         component: () => import('pages/AdminPage.vue'), // Path to your admin page component

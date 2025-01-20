@@ -1,6 +1,7 @@
 // stores/blog.js
 import { defineStore } from 'pinia'
 
+
 export const useBlogStore = defineStore('blog', {
   state: () => ({
     blogs: [
@@ -13,7 +14,7 @@ export const useBlogStore = defineStore('blog', {
         likes: 25,
         views: 100,
         date: '2024-12-08',
-        image: 'blog-1.jpg',
+        image: '/home-page.jpg',
       },
       {
         id: 2,
@@ -24,7 +25,7 @@ export const useBlogStore = defineStore('blog', {
         likes: 30,
         views: 150,
         date: '2024-12-10',
-        image: 'blog-2.jpg',
+        image: '/home-page.jpg',
       },
       {
         id: 3,
@@ -35,7 +36,7 @@ export const useBlogStore = defineStore('blog', {
         likes: 50,
         views: 200,
         date: '2024-12-12',
-        image: 'blog-3.jpg',
+        image: '/home-page.jpg',
       },
       {
         id: 4,
@@ -46,7 +47,7 @@ export const useBlogStore = defineStore('blog', {
         likes: 40,
         views: 180,
         date: '2024-12-14',
-        image: 'blog-4.jpg',
+        image: '/home-page.jpg',
       },
       {
         id: 5,
@@ -57,7 +58,7 @@ export const useBlogStore = defineStore('blog', {
         likes: 60,
         views: 250,
         date: '2024-12-16',
-        image: 'blog-5.jpg',
+        image: '/home-page.jpg',
       },
       {
         id: 6,
@@ -68,7 +69,7 @@ export const useBlogStore = defineStore('blog', {
         likes: 55,
         views: 230,
         date: '2024-12-18',
-        image: 'blog-6.jpg',
+        image: '/home-page.jpg',
       },
       {
         id: 7,
@@ -79,7 +80,7 @@ export const useBlogStore = defineStore('blog', {
         likes: 70,
         views: 280,
         date: '2024-12-20',
-        image: 'blog-7.jpg',
+        image: '/home-page.jpg',
       },
       {
         id: 8,
@@ -91,7 +92,7 @@ export const useBlogStore = defineStore('blog', {
         likes: 45,
         views: 210,
         date: '2024-12-22',
-        image: 'blog-8.jpg',
+        image: '/home-page.jpg',
       },
       {
         id: 9,
@@ -103,7 +104,7 @@ export const useBlogStore = defineStore('blog', {
         likes: 80,
         views: 300,
         date: '2024-12-24',
-        image: 'blog-9.jpg',
+        image: '/home-page.jpg',
       },
       {
         id: 10,
@@ -114,7 +115,7 @@ export const useBlogStore = defineStore('blog', {
         likes: 90,
         views: 350,
         date: '2024-12-26',
-        image: 'blog-10.jpg',
+        image: '/home-page.jpg',
       },
       {
         id: 11,
@@ -125,22 +126,26 @@ export const useBlogStore = defineStore('blog', {
         likes: 65,
         views: 220,
         date: '2024-12-28',
-        image: 'blog-11.jpg',
+        image: '/home-page.jpg',
       },
     ],
   }),
   actions: {
-    addBlog(blog) {
-  addBlog(newBlog) {
-  this.blogs.push(newBlog);
-}
+    // Add a new blog
+    addBlog(newBlog) {
+      this.blogs.push(newBlog)
+      console.log('Blog added:', newBlog) // Debugging line
     },
+
+    // Edit an existing blog
     editBlog(id, updatedBlog) {
       const index = this.blogs.findIndex((blog) => blog.id === id)
       if (index !== -1) {
         this.blogs[index] = { ...this.blogs[index], ...updatedBlog }
       }
     },
+
+    // Delete a blog by ID
     deleteBlog(id) {
       this.blogs = this.blogs.filter((blog) => blog.id !== id)
     },

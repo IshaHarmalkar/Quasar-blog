@@ -29,6 +29,13 @@
             <q-item-section> Home </q-item-section>
           </q-item>
 
+            <q-item clickable v-ripple @click="$router.push('/admin')">
+            <q-item-section avatar>
+              <q-icon name="dashboard" />
+            </q-item-section>
+            <q-item-section> Dashboard</q-item-section>
+          </q-item>
+
           <q-item clickable v-ripple @click="$router.push('/create')">
             <q-item-section avatar>
               <q-icon name="edit" />
