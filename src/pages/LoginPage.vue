@@ -25,6 +25,11 @@
                   <div class="q-mt-md">
                     <q-btn label="Sign in" class="full-width primary-btn" />
                   </div>
+                  <div>
+                    <div>Don't have an account? <a href="#">Sign Up</a></div>
+                    <div>Forgot your password? <a href="#">Reset</a></div>
+
+                  </div>
                 </q-form>
               </div>
             </div>
@@ -61,6 +66,10 @@ label {
   color: white;
 }
 
+a{
+  color: skyblue;
+}
+
 .login {
   background: whitesmoke;
 }
@@ -72,6 +81,7 @@ label {
   border: 1px solid black;
   border-radius: 20px;
   text-align: center;
+ 
 }
 
 .hexagon-container {
@@ -86,7 +96,7 @@ label {
 
 .semicircle-container {
   width: 100%; /* Full width of col-md-6 */
-  height: 100%; /* Height should be half of the width to make it a semicircle */
+  height: 100vh; /* Height should be half of the width to make it a semicircle */
   box-sizing: border-box;
   background: linear-gradient(90deg, #012f61, #044a85, #012f61);
   border: solid #044a85 10px;
