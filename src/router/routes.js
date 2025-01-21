@@ -16,6 +16,17 @@ const routes = [
       },
     ],
   },
+  {
+    path: '/login',
+    component: () => import('layouts/LoginLayout.vue'), // Use custom layout for login
+    children: [
+      {
+        path: '', // Empty path to load the login page directly
+        component: () => import('pages/LoginPage.vue'),
+        name: 'login',
+      },
+    ],
+  },
 
   // Always leave this as last one,
   // but you can also remove it

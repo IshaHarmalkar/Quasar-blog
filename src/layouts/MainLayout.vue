@@ -43,6 +43,14 @@
             <q-item-section> Create Post </q-item-section>
           </q-item>
 
+          
+          <q-item clickable v-ripple @click="$router.push('/login')">
+            <q-item-section avatar>
+              <q-icon name="login" />
+            </q-item-section>
+            <q-item-section>LogIn </q-item-section>
+          </q-item>
+
           <q-item clickable v-ripple @click="$router.push('/about')">
             <q-item-section avatar>
               <q-icon name="info" />
