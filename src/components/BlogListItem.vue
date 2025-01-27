@@ -8,34 +8,41 @@
           </q-card-section>
           <q-separator />
 
-          <!-- Blog List -->
+          <!-- Dynamic Blog List -->
           <q-list bordered separator>
-            <!-- Static Blog Entry -->
-            <q-item clickable v-ripple class="q-mb-md">
+            <!-- Iterate through blogs from the store -->
+            <q-item
+              v-for="blog in blogStore.blogs"
+              :key="blog.id"
+              clickable
+              v-ripple
+              class="q-mb-md"
+            >
               <!-- Blog Cover Image on the Left -->
               <q-item-section avatar>
                 <q-img
-                  src="/home-page.jpg"
-                  alt="Blog Image"
+                  :src="blog.image"
+                  :alt="blog.title"
                   style="width: 100px; height: 100px; object-fit: cover"
                 />
               </q-item-section>
 
               <!-- Blog Content -->
               <q-item-section>
-                <q-item-label class="text-h6">First Blog</q-item-label>
+                <q-item-label class="text-h6">{{ blog.title }}</q-item-label>
                 <q-item-label caption class="text-grey">
-                  This blog is about mundane things
+                  {{ blog.summary }}
                 </q-item-label>
                 <div class="q-mt-sm row items-center text-grey">
                   <div class="col-auto">
-                    <q-icon name="favorite" size="18px" color="red" /> 25 Likes
+                    <q-icon name="favorite" size="18px" color="red" /> {{ blog.likes }} Likes
                   </div>
                   <div class="col-auto q-ml-md">
-                    <q-icon name="visibility" size="18px" color="blue" /> 100 Views
+                    <q-icon name="visibility" size="18px" color="blue" /> {{ blog.views }} Views
                   </div>
                   <div class="col-auto q-ml-md">
-                    <q-icon name="event" size="18px" color="grey" /> 12/08/24
+                    <q-icon name="event" size="18px" color="grey" />
+                    {{ new Date(blog.date).toLocaleDateString() }}
                   </div>
                 </div>
               </q-item-section>
@@ -49,7 +56,7 @@
                     size="sm"
                     icon="edit"
                     flat
-                    @click="editBlog"
+                    @click="editBlog(blog.id)"
                   />
                   <q-btn
                     label="Delete"
@@ -58,7 +65,7 @@
                     icon="delete"
                     flat
                     class="q-ml-sm"
-                    @click="deleteBlog"
+                    @click="deleteBlog(blog.id)"
                   />
                 </div>
               </q-item-section>
@@ -71,8 +78,25 @@
 </template>
 
 <script>
+import { useBlogStore } from 'src/stores/blog-store';
+
 export default {
-  
+  name: 'BlogListItem',
+  setup() {
+    const blogStore = useBlogStore()
+
+    const editBlog = (id) => {
+      console.log(`Edit blog with ID: ${id}`)
+      // Add navigation or edit functionality here
+    }
+
+    const deleteBlog = (id) => {
+      console.log(`Delete blog with ID: ${id}`)
+      blogStore.deleteBlog(id) // Calls the delete action from the store
+    }
+
+    return { blogStore, editBlog, deleteBlog }
+  },
 }
 </script>
 
@@ -83,10 +107,7 @@ export default {
   object-fit: cover;
 }
 
-.blog-list-admin{
-    border: 1px solid red;
+.blog-list-admin {
+  border: 1px solid red;
 }
-
-
-
 </style>

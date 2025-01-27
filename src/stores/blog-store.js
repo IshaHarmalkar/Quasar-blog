@@ -82,72 +82,81 @@ export const useBlogStore = defineStore('blog', {
         date: '2024-12-20',
         image: '/home-page.jpg',
       },
-      {
-        id: 8,
-        title: 'How to Disconnect from Social Media',
-        summary:
-          'Social media can be draining. Here’s how to take a break and reconnect with yourself.',
-        content:
-          'Explore strategies to reduce social media use and create space for real-world connections.',
-        likes: 45,
-        views: 210,
-        date: '2024-12-22',
-        image: '/home-page.jpg',
-      },
-      {
-        id: 9,
-        title: 'Building a Sustainable Slow Living Routine',
-        summary:
-          'Sustainable living aligns well with slow living principles. Here’s how to make it work.',
-        content:
-          'Learn how to adopt eco-friendly practices that support a slower, more intentional lifestyle.',
-        likes: 80,
-        views: 300,
-        date: '2024-12-24',
-        image: '/home-page.jpg',
-      },
-      {
-        id: 10,
-        title: 'Embracing the Art of Doing Nothing',
-        summary: 'Sometimes, the best way to slow down is to do absolutely nothing.',
-        content:
-          'Discover the benefits of resting and how doing nothing can rejuvenate both body and mind.',
-        likes: 90,
-        views: 350,
-        date: '2024-12-26',
-        image: '/home-page.jpg',
-      },
-      {
-        id: 11,
-        title: 'The Joy of Simple Hobbies',
-        summary:
-          'Rediscover the pleasure of simple activities like knitting, reading, or gardening.',
-        content: 'Learn how slow hobbies can bring joy and mindfulness into your daily routine.',
-        likes: 65,
-        views: 220,
-        date: '2024-12-28',
-        image: '/home-page.jpg',
-      },
+    
     ],
   }),
+
+  getters: {
+    // Get a blog by its ID
+    getBlogById: (state) => (id) => {
+      return state.blogs.find((blog) => blog.id === id)
+    },
+
+    // Get blogs sorted by likes
+    blogsByLikes: (state) => {
+      return [...state.blogs].sort((a, b) => b.likes - a.likes)
+    },
+
+    // Get blogs sorted by views
+    blogsByViews: (state) => {
+      return [...state.blogs].sort((a, b) => b.views - a.views)
+    },
+
+    // Get the total count of blogs
+    totalBlogs: (state) => {
+      return state.blogs.length
+    },
+
+    // Get blogs published after a given date
+    blogsAfterDate: (state) => (date) => {
+      return state.blogs.filter((blog) => new Date(blog.date) > new Date(date))
+    },
+  },
+
   actions: {
     // Add a new blog
     addBlog(newBlog) {
+      // Ensure the blog ID is unique
+      if (this.blogs.some((blog) => blog.id === newBlog.id)) {
+        console.warn(`Blog with id ${newBlog.id} already exists`)
+        return
+      }
       this.blogs.push(newBlog)
-      console.log('Blog added:', newBlog) // Debugging line
     },
 
-    // Edit an existing blog
-    editBlog(id, updatedBlog) {
-      const index = this.blogs.findIndex((blog) => blog.id === id)
-      if (index !== -1) {
-        this.blogs[index] = { ...this.blogs[index], ...updatedBlog }
+    // Update an existing blog
+    updateBlog(id, updatedData) {
+      const blog = this.blogs.find((blog) => blog.id === id)
+      if (blog) {
+        Object.assign(blog, updatedData)
+      } else {
+        console.warn(`Blog with id ${id} not found`)
       }
     },
 
     // Delete a blog by ID
     deleteBlog(id) {
       this.blogs = this.blogs.filter((blog) => blog.id !== id)
+    },
+
+    // Increment likes for a blog
+    incrementLikes(id) {
+      const blog = this.blogs.find((blog) => blog.id === id)
+      if (blog) {
+        blog.likes += 1
+      } else {
+        console.warn(`Blog with id ${id} not found`)
+      }
+    },
+
+    // Increment views for a blog
+    incrementViews(id) {
+      const blog = this.blogs.find((blog) => blog.id === id)
+      if (blog) {
+        blog.views += 1
+      } else {
+        console.warn(`Blog with id ${id} not found`)
+      }
     },
   },
 })

@@ -2,9 +2,6 @@
   <div class="blog-list">
     <div class="row">
       <BlogListItem />
-      <BlogListItem />
-
-      <BlogListItem />
     </div>
   </div>
 </template>

@@ -28,7 +28,6 @@
                   <div>
                     <div>Don't have an account? <a href="#">Sign Up</a></div>
                     <div>Forgot your password? <a href="#">Reset</a></div>
-
                   </div>
                 </q-form>
               </div>
@@ -66,7 +65,7 @@ label {
   color: white;
 }
 
-a{
+a {
   color: skyblue;
 }
 
@@ -81,7 +80,6 @@ a{
   border: 1px solid black;
   border-radius: 20px;
   text-align: center;
- 
 }
 
 .hexagon-container {
