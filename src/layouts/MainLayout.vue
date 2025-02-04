@@ -57,6 +57,13 @@
             </q-item-section>
             <q-item-section> About </q-item-section>
           </q-item>
+
+            <q-item clickable v-ripple @click="$router.push('/dashboard')">
+            <q-item-section avatar>
+              <q-icon name="info" />
+            </q-item-section>
+            <q-item-section> CRUD </q-item-section>
+          </q-item>
         </q-list>
       </q-drawer>
 

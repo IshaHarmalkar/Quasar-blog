@@ -14,6 +14,16 @@ const routes = [
         component: () => import('pages/BlogEditor.vue'), // Path to the BlogEditor component
         name: 'create', // Named route for easier navigation
       },
+      {
+        path: 'edit/:blogId', // Dynamic route with blogId as a parameter
+        component: () => import('pages/BlogEditor.vue'), // Lazy load the BlogEditor.vue page
+        name: 'edit', // Named route
+      },
+      {
+        path: 'dashboard', // New route for Blog Dashboard
+        component: () => import('pages/BlogDashboard.vue'),
+        name: 'dashboard',
+      },
     ],
   },
   {

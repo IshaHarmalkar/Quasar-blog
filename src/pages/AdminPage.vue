@@ -1,11 +1,12 @@
 <template>
   <q-page>
     <div class="row admin-page">
-      <div class="col-9">
+    
+      <div class="col-9 bg-1">
         <BlogList />
       </div>
 
-      <div class="col-3">
+      <div class="col-3 bg-2">
         <q-btn label="Create Blog" color="primary" @click="goToEditor" class="blog-list-admin" />
       </div>
     </div>
@@ -47,6 +48,14 @@ button {
 
 .admin-page {
   margin: 100px 25px;
-  border: solid 1px blue;
+  /*border: solid 1px blue; */
+}
+
+.bg-1 {
+ 
+}
+
+.bg-2 {
+ 
 }
 </style>
